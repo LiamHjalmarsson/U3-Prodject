@@ -23,8 +23,11 @@ function getTeacersOnSearch () {
                             <div class="responsible">Course Responsible</div>  
                             <div class="teachers">Teachers</div>
                         </div>
-                        
+
                         <div class="name-teachers"> 
+                        </div>
+                        <p> Students </p>
+                        <div class="students">
                         </div>
                     </div>
                 `
