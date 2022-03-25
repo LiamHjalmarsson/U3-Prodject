@@ -6,14 +6,14 @@ function getStudentsCourses (counter) {
             if (studentCourse.courseId == databasCourse.courseId) {
                 if (studentCourse.passedCredits == databasCourse.totalCredits)
                 selectElement(`div > div:last-child > .search-courses`).innerHTML += `
-                <div class="course-title done">
+                <div class="done">
                 ${databasCourse.title} <br>
                 ${studentCourse.started.semester} ${studentCourse.started.year}
                 ${studentCourse.passedCredits}/${databasCourse.totalCredits}</div>
                 `
                 else {
                     selectElement(`div > div:last-child > .search-courses`).innerHTML += `
-                    <div class="course-title notDone">
+                    <div class="notDone">
                     ${databasCourse.title} <br>
                     ${studentCourse.started.semester} ${studentCourse.started.year}
                     ${studentCourse.passedCredits}/${databasCourse.totalCredits}</div>
