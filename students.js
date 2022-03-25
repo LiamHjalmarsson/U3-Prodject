@@ -24,6 +24,8 @@ function getResultStudent () {
                   <div class="search-courses"></div>
                   </div>
                   `; 
+
+                  getStudentsCourses(i);
             }
         } 
     }
