@@ -1,15 +1,24 @@
 "use strict";
 
-function getStudentsCourses (i) {
-    for (let studentCourse of DATABASE.students[i].courses) {
+function getStudentsCourses (counter) {
+    for (let studentCourse of DATABASE.students[counter].courses) {
         for (let databasCourse of DATABASE.courses) {
             if (studentCourse.courseId == databasCourse.courseId) {
+                if (studentCourse.passedCredits == databasCourse.totalCredits)
                 selectElement(`div > div:last-child > .search-courses`).innerHTML += `
-                <div class="course-title">
+                <div class="course-title done">
                 ${databasCourse.title} <br>
                 ${studentCourse.started.semester} ${studentCourse.started.year}
                 ${studentCourse.passedCredits}/${databasCourse.totalCredits}</div>
                 `
+                else {
+                    selectElement(`div > div:last-child > .search-courses`).innerHTML += `
+                    <div class="course-title notDone">
+                    ${databasCourse.title} <br>
+                    ${studentCourse.started.semester} ${studentCourse.started.year}
+                    ${studentCourse.passedCredits}/${databasCourse.totalCredits}</div>
+                    `
+                }
             }
         }    
     }
