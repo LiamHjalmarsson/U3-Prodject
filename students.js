@@ -18,7 +18,7 @@ function getResultStudent () {
                   <h3 class="studentTitle"> 
                       ${DATABASE.students[i].firstName}
                       ${DATABASE.students[i].lastName}
-                      ( total credits:0)
+                      ( total credits: ${getTotalCredits(i)} )
                   </h3>
                   <p> Courses </p>
                   <div class="search-courses"></div>

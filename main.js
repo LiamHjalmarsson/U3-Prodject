@@ -9,3 +9,17 @@ let selectElement = (select) => {
 let clearResults = () => {
     selectElement("#search-result").innerHTML = "";
 }
+
+function getTotalCredits (counter) {
+    let credits = []; 
+
+    for (let studentCourse of DATABASE.students[counter].courses) {
+        credits.push(studentCourse.passedCredits);
+    }
+
+    let creditSum = 0; 
+    for (let i = 0; i < credits.length; i++) {
+        creditSum += credits[i]
+    }
+    return creditSum;
+}
