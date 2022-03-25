@@ -23,18 +23,3 @@ function getTotalCredits (counter) {
     }
     return creditSum;
 }
-
-function getStudentsCourses (i) {
-    for (let studentCourse of DATABASE.students[i].courses) {
-        for (let databasCourse of DATABASE.courses) {
-            if (studentCourse.courseId == databasCourse.courseId) {
-                selectElement(`div > div:last-child > .search-courses`).innerHTML += `
-                <div class="course-title">
-                ${databasCourse.title} <br>
-                ${studentCourse.started.semester} ${studentCourse.started.year}
-                ${studentCourse.passedCredits}/${databasCourse.totalCredits}</div>
-                `
-            }
-        }    
-    }
-}
