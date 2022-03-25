@@ -5,6 +5,7 @@ let selectElement = (select) => {
     return document.querySelector(select); 
 }
 
+// Cleanse the content 
 let clearResults = () => {
     selectElement("#search-result").innerHTML = "";
 }
