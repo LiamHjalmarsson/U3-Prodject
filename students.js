@@ -1,10 +1,5 @@
 "use strict";
 
-// Choose a element based on what is given in parameter
-let selectElement = (select) => {
-    return document.querySelector(select); 
-}
-
 function getResultStudent () {
     // varibale search assingde calls selectElement to get assinged input and its value 
     let search = selectElement("#searchbar").value; 
@@ -33,10 +28,5 @@ function getResultStudent () {
         } 
     }
 } 
-
-let clearResults = () => {
-    selectElement("#search-result").innerHTML = "";
-}
-
 
 selectElement('#searchbar').addEventListener('keyup', getResultStudent);
