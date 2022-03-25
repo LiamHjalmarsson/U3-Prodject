@@ -35,7 +35,10 @@ function getResultStudent () {
         
         for (let i = 0; i < DATABASE.students.length; i++) {
             
-            if( DATABASE.students[i].lastName.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+
+            if ( DATABASE.students[i].lastName.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ) {
+                sortStudents();
+
                 // Lägger till innehåll om studentents namn för namn, efternamn och credits 
                 selectElement('#search-result').innerHTML += ` 
                   <div class="search-div">
@@ -56,3 +59,4 @@ function getResultStudent () {
 } 
 
 selectElement('#searchbar').addEventListener('keyup', getResultStudent);
+
