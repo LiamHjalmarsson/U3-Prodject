@@ -10,6 +10,8 @@ function getResultStudent () {
     let search = selectElement("#searchbar").value; 
     // console.log(search);
 
+    clearResults();
+    
     if (search.length > 0) {
         
         for (let i = 0; i < DATABASE.students.length; i++) {
@@ -31,6 +33,10 @@ function getResultStudent () {
         } 
     }
 } 
+
+let clearResults = () => {
+    selectElement("#search-result").innerHTML = "";
+}
 
 
 selectElement('#searchbar').addEventListener('keyup', getResultStudent);
