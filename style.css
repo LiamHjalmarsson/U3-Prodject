@@ -50,7 +50,7 @@ body {
 
 .search-div {
     width: 90vw;
-    max-width: 1200px;
+    max-width: 1100px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     border:rgb(128, 158, 172) solid 4px;
@@ -88,10 +88,12 @@ body {
     flex-grow: 1;
     padding: 10px;
     background-color: rgb(87, 250, 87);
+    font-weight: bold;
 }
 
 .notDone {
     flex-grow: 1;
     padding: 10px;
     background-color: rgb(250, 164, 164);
+    font-weight: bold;
 }
