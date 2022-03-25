@@ -18,9 +18,13 @@ function getTeacersOnSearch () {
                 selectElement("#search-result").innerHTML += `
                     <div class="search-div">
                         <h3 class="studentTitle"> ${DATABASE.courses[i].title} (  credits) </h3>
+                        
                         <div class="proffesion">    
-                        <div class="responsible">Course Responsible</div>  
-                        <div class="teachers">Teachers</div>
+                            <div class="responsible">Course Responsible</div>  
+                            <div class="teachers">Teachers</div>
+                        </div>
+                        
+                        <div class="name-teachers"> 
                         </div>
                     </div>
                 `
