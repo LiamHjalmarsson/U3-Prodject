@@ -41,7 +41,10 @@ function getResultStudent () {
         
         for (let i = 0; i < DATABASE.students.length; i++) {
             
+
             if ( DATABASE.students[i].lastName.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ) {
+                sortStudents();
+
                 // Lägger till innehåll om studentents namn för namn, efternamn och credits 
                 selectElement('#search-result').innerHTML += ` 
                     <div class="search-div">
@@ -62,14 +65,3 @@ function getResultStudent () {
 } 
 
 selectElement('#searchbar').addEventListener('keyup', getResultStudent);
-
-
-// DATABASE.students.sort(function(a, b) {
-//     if (a.firstName > b.firstName) {
-//       return 1;
-//     }
-//     else if (a.firstName < b.firstName) {
-//       return -1;
-//     }
-//     return 0
-//   });
