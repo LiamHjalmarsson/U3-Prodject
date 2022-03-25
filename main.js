@@ -37,7 +37,6 @@ function sortStudents () {
     }
 
     return 0
-    
   });
-
+  
 }
