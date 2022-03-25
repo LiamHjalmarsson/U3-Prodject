@@ -13,3 +13,6 @@ function getResultStudent () {
         }
     } 
 } 
+
+
+selectElement('#searchbar').addEventListener('keyup', getResultStudent);
