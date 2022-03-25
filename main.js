@@ -25,13 +25,19 @@ function getTotalCredits (counter) {
 }
 
 function sortStudents () {
+    
     DATABASE.students.sort(function(a, b) {
-    if (a.firstName > b.firstName) {
+    
+    if ( a.firstName > b.firstName ) {
       return 1;
     }
-    else if (a.firstName < b.firstName) {
+
+    else if ( a.firstName < b.firstName ) {
       return -1;
     }
+
     return 0
+    
   });
+
 }

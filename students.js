@@ -43,6 +43,7 @@ function getResultStudent () {
             
 
             if ( DATABASE.students[i].lastName.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ) {
+                
                 sortStudents();
 
                 // Lägger till innehåll om studentents namn för namn, efternamn och credits 
