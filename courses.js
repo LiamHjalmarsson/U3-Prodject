@@ -40,37 +40,59 @@ function responsibelOfCourse (counter) {
   
 }
 
-
+// Teachers in courses
 function teacherInCourse (counter) {
   
-    let course = DATABASE.courses[counter].teachers;
+    let courses = DATABASE.courses[counter].teachers;
     
-    // console.log(course)
+    // console.log(courses)
     
     for ( let course of DATABASE.courses[counter].teachers) {
-      // console.log(course)
+      
+        // console.log(course)
     
       for ( let teachers of DATABASE.teachers ) {
     
-        if ( course == teachers.teacherId) {
-          
-          selectElement(`.name-teachers`).innerHTML += `
-          <div>
-            ${teachers.firstName} ${teachers.lastName}  ( ${teachers.post} )
-          </div>
-          `
-  
-        }   
+        // console.log(teachers)
+
+        if ( course == teachers.teacherId ) {
+
+          selectElement(`div > div:last-child > .name-teachers`).innerHTML += `
+                <div>
+                    ${teachers.firstName} ${teachers.lastName}  (${teachers.post})
+                </div>
+            `
+        }  
       }  
     }
   }
-  
 
-  function getStudentsFromCourse (counter) {
+// Get the students of the course 
+function getStudentsFromCourse (counter) {
   
-  
-  
-  }
+    let students = DATABASE.students.filter((student) => student.courses.some((course) => course.courseId == DATABASE.courses[counter].courseId))
+    for (let student of students){
+        
+        let courseById = student.courses.filter((course) => course.courseId == DATABASE.courses[counter].courseId)
+        
+        if ( courseById[0].passedCredits == DATABASE.courses[counter].totalCredits ) { 
+        selectElement('div > div:last-child > .students').innerHTML += `
+        <div class="done">
+                <h4> ${student.firstName} ${student.lastName} </h4>
+                ${courseById[0].started.semester} ${courseById[0].started.year} ${courseById[0].passedCredits} credits
+        </div>
+        ` 
+        } else {
+            selectElement('div > div:last-child > .students').innerHTML += `
+            <div class="notDone">
+                    <h4> ${student.firstName} ${student.lastName} </h4>
+                    ${courseById[0].started.semester} ${courseById[0].started.year} ${courseById[0].passedCredits} credits
+            </div>
+            ` 
+        }
+    } 
+}
+
 
 
 function getTeacersOnSearch () {
@@ -114,24 +136,21 @@ function getTeacersOnSearch () {
                             
                     </div>
                  `
-                    teacherInCourse(i)
-                    // getStudentsFromCourse(i)
+                 teacherInCourse(i)
+                 getStudentsFromCourse(i)
+
             }
         }
     } 
 }
 
-
-selectElement("#searchbar").addEventListener("keyup", getTeacersOnSearch);
-
-
 //Skapar en dark/light mode funktion där "knappen/button" skapas till en eventListener 
 function darkMode() {
-
+    
     var element = document.body;
     const darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
-  
+    
     if (JSON.parse(darkMode) == true) {
         element.classList.remove("darkMode");
         localStorage.setItem("darkMode", JSON.stringify(false));
@@ -140,7 +159,9 @@ function darkMode() {
         element.classList.add("darkMode");
         localStorage.setItem("darkMode", JSON.stringify(true));
     }
-    
-  }
-  
+}
+
 selectElement(".theme").addEventListener("click", darkMode)
+
+selectElement("#searchbar").addEventListener("keyup", getTeacersOnSearch);
+
