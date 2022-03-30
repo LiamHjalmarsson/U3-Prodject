@@ -79,13 +79,13 @@ body {
 .done {
     flex-grow: 1;
     padding: 10px;
-    background-color: rgb(87, 250, 87);
+    background-color: rgba(87, 250, 87, 0.5);
     font-weight: bold;
 }
 
 .notDone {
     flex-grow: 1;
     padding: 10px;
-    background-color: rgb(250, 164, 164);
+    background-color: rgb(250, 164, 164, 0.5);
     font-weight: bold;
 }

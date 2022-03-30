@@ -8,7 +8,7 @@
 body { 
     margin: 0px;
     padding: 0px;
-    background-color: rgb(170, 165, 165);
+    background-color: rgb(199, 198, 198);
 }
 
 #box {
@@ -65,6 +65,11 @@ body {
     margin-left: 20px;
 }
 
+.responsibleTeacher {
+    margin-left: 20px;
+    background-color: rgb(240, 212, 88, 0.5);
+}
+
 .name-teachers {
     display: flex;
     flex-wrap: wrap;
@@ -105,13 +110,17 @@ body {
 .done {
     flex-grow: 1;
     padding: 10px;
-    background-color: rgb(87, 250, 87);
+    background-color: rgba(87, 250, 87, 0.50);
     font-weight: bold;
 }
 
 .notDone {
     flex-grow: 1;
     padding: 10px;
-    background-color: rgb(250, 164, 164);
+    background-color: rgb(250, 164, 164, 0.50);
     font-weight: bold;
+}
+
+.darkMode {
+    background-color: rgb(85, 83, 83);
 }
