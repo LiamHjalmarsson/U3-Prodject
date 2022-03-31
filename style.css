@@ -11,28 +11,31 @@ body {
     background-color: rgb(170, 165, 165);
 }
 
-#box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
 #header {
     margin-top: 20px;
     text-align: center;
 }
 
-#searchbar {
-    margin-top: 10px;
+#box {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 10px;
+}
+
+
+#searchbar {
+    margin: 10px 10px 10px 0px;
     padding: 10px 10px;
-    width: 300px;
+    width: 250px;
     border-radius: 5px;
     border: solid rgb(63, 62, 62) 1px;
 }
 
+button {
+    padding: 10px;
+}
 
 #search-result {
     display: flex;
@@ -63,11 +66,12 @@ body {
     flex-wrap: wrap;
     gap: 10px;
     margin: 10px 20px 20px 20px;
-    justify-content: center;
 }
 
 .search-courses > div {
+    max-width: 500px;
     border: solid rgb(63, 62, 62) 1px;
+    border-radius: 4px;
 }
 
 .course-title {
@@ -80,12 +84,18 @@ body {
     flex-grow: 1;
     padding: 10px;
     background-color: rgba(87, 250, 87, 0.5);
-    font-weight: bold;
 }
 
 .notDone {
     flex-grow: 1;
     padding: 10px;
     background-color: rgb(250, 164, 164, 0.5);
-    font-weight: bold;
+}
+
+.done:hover {
+    background-color: rgba(87, 250, 87, 0.8);
+}
+
+.notDone:hover {
+    background-color: rgb(250, 164, 164, 0.8);
 }

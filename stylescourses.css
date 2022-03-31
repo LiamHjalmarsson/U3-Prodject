@@ -11,28 +11,32 @@ body {
     background-color: rgb(199, 198, 198);
 }
 
-#box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
 #header {
     margin-top: 20px;
     text-align: center;
 }
 
-#searchbar {
-    margin-top: 10px;
+#box {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 10px;
+}
+
+
+#searchbar {
+    margin: 10px 10px 10px 0px;
     padding: 10px 10px;
-    width: 300px;
+    width: 250px;
     border-radius: 5px;
     border: solid rgb(63, 62, 62) 1px;
 }
 
+
+button {
+    padding: 10px;
+}
 
 #search-result {
     display: flex;
@@ -53,11 +57,10 @@ body {
 .studentTitle {
     margin: 10px 20px 10px 20px;
 }
-/*  */
 
 .proffesion {
     display: grid;
-    grid-template-columns: 265px 200px;
+    grid-template-columns: 285px 200px;
     margin-bottom: 10px;
 }
 
@@ -73,8 +76,12 @@ body {
 .name-teachers {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 10px;
+}
+
+.responsibleTeacher {
+    margin-right: 30px;
 }
 
 .name-teachers > div {
@@ -97,8 +104,9 @@ body {
 }
 
 .students > div {
-    padding: 7px;
+    max-width: 300px;
     border: solid rgb(63, 62, 62) 1px;
+    border-radius: 4px;
 }
 
 .course-title {
@@ -111,16 +119,19 @@ body {
     flex-grow: 1;
     padding: 10px;
     background-color: rgba(87, 250, 87, 0.50);
-    font-weight: bold;
 }
 
 .notDone {
     flex-grow: 1;
     padding: 10px;
     background-color: rgb(250, 164, 164, 0.50);
-    font-weight: bold;
 }
 
-.darkMode {
-    background-color: rgb(85, 83, 83);
+.done:hover {
+    background-color: rgba(87, 250, 87, 0.8);
 }
+
+.notDone:hover {
+    background-color: rgb(250, 164, 164, 0.8);
+}
+

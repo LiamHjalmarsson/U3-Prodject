@@ -62,7 +62,7 @@ function getStudentsCourses (counter) {
                
                     selectElement(`div > div:last-child > .search-courses`).innerHTML += `
                     <div class="done">
-                        ${databasCourse.title} <br>
+                        <h4> ${databasCourse.title} </h4>
                         ${studentCourse.started.semester} ${studentCourse.started.year}
                         ${studentCourse.passedCredits} of ${databasCourse.totalCredits} credits 
                     </div>
@@ -71,7 +71,7 @@ function getStudentsCourses (counter) {
 
                     selectElement(`div > div:last-child > .search-courses`).innerHTML += `
                     <div class="notDone">
-                        ${databasCourse.title} <br>
+                        <h4>${databasCourse.title} </h4>
                         ${studentCourse.started.semester} ${studentCourse.started.year}
                         ${studentCourse.passedCredits} of ${databasCourse.totalCredits} credits
                     </div>
@@ -120,5 +120,47 @@ function getResultStudent () {
     }
 } 
 
-selectElement('#searchbar').addEventListener('keyup', getResultStudent);
+// Kollar efter sparade darkmode 
+let darkMode = localStorage.getItem('darkMode'); 
 
+let darkModeToggle = document.querySelector('#dark-mode-toggle');
+
+// aktivera DarkMode
+function enableDarkMode ()  {
+  // Lägger till klass 
+  document.body.classList.add('darkmode');
+  // updaterar darkMode till localStorage
+  localStorage.setItem('darkMode', 'enabled');
+}
+
+// av aktiverar DarMode 
+function disableDarkMode () {
+  // tarbort classen darkMode
+  document.body.classList.remove('darkmode');
+  // updaterar darkMode i localStorage 
+  localStorage.setItem('darkMode', null);
+}
+
+console.log(darkModeToggle)
+ 
+// Om användaren har ackiverar DarkMode sedan tidigare 
+if (darkMode === 'enabled') {
+  enableDarkMode();
+}
+
+// Knapp för aktivera och avaktivera
+darkModeToggle.addEventListener('click', () => {
+  // Få dark mode inställningar
+  darkMode = localStorage.getItem('darkMode'); 
+  
+  // Om inte aktiverad aktivera 
+  if (darkMode !== 'enabled') {
+    enableDarkMode();
+  // Om aktiverade avaktivera 
+  } else {  
+    disableDarkMode(); 
+  }
+});
+
+// Sök efter student med keyup 
+selectElement('#searchbar').addEventListener('keyup', getResultStudent);
