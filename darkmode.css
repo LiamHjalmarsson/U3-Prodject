@@ -1,4 +1,8 @@
 .darkmode {
-    background-color: rgb(46, 43, 43);  
+    --clr-light: #2b2b28;
+    --clr-dark: #d7fff8;
+    --clr-boxPrimary: #a4a79e;
+    --clr-border: #517971;
+    --clr-done: #4db640bb;
+    --clr-notDone: #9930308e;
 }
-

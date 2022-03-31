@@ -1,3 +1,12 @@
+:root {
+    --clr-light: #f3c580;
+    --clr-dark: #16171a;
+    --clr-boxPrimary: #d1ccc9;
+    --clr-border: #2a3033da;
+    --clr-done: #8ff382bb;
+    --clr-notDone: #e674748e;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,12 +17,15 @@
 body { 
     margin: 0px;
     padding: 0px;
-    background-color: rgb(170, 165, 165);
+    background-color: var(--clr-light);
+    color: var(--clr-dark);
 }
 
 #header {
     margin-top: 20px;
     text-align: center;
+    color: black;
+    color: var(--clr-dark);
 }
 
 #box {
@@ -30,7 +42,7 @@ body {
     padding: 10px 10px;
     width: 250px;
     border-radius: 5px;
-    border: solid rgb(63, 62, 62) 1px;
+    border: solid var( --clr-border ) 2px;
 }
 
 button {
@@ -47,11 +59,12 @@ button {
 .search-div {
     width: 90vw;
     max-width: 1100px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--clr-boxPrimary);
     border-radius: 10px;
-    border:rgb(128, 158, 172) solid 4px;
+    border: solid var( --clr-border ) 2px;
     margin-bottom: 10px;
 }
+
 .studentTitle {
     margin: 10px 20px 5px 20px;
 }
@@ -70,7 +83,7 @@ button {
 
 .search-courses > div {
     max-width: 500px;
-    border: solid rgb(63, 62, 62) 1px;
+    border: solid var( --clr-border ) 2px;
     border-radius: 4px;
 }
 
@@ -79,17 +92,16 @@ button {
     padding: 10px;
 }
 
-
 .done {
     flex-grow: 1;
     padding: 10px;
-    background-color: rgba(87, 250, 87, 0.5);
+    background-color: var(--clr-done);
 }
 
 .notDone {
     flex-grow: 1;
     padding: 10px;
-    background-color: rgb(250, 164, 164, 0.5);
+    background-color: var(--clr-notDone);
 }
 
 .done:hover {
@@ -97,5 +109,6 @@ button {
 }
 
 .notDone:hover {
-    background-color: rgb(250, 164, 164, 0.8);
+    background-color: rgba(218, 34, 21, 0.699);
 }
+

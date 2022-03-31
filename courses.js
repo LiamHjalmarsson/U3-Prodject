@@ -1,80 +1,91 @@
 "use strict" 
 
-// Choose a element based on what is given in parameter
+// Välj element baserat på vad som är angivet 
 let selectElement = (select) => {
+
     return document.querySelector(select); 
+
 }
 
-// Cleanse the content 
+// Rensar innehållet
 let clearResults = () => {
+
     selectElement("#search-result").innerHTML = "";
+
 }
 
-// sort 
+//Sorterar kurserna efter titel bokstavsordning  
 function sortCourseTitle () {
 
     DATABASE.courses.sort((a, b) => {
       if (a.title > b.title) {
+
         return 1;
+
       }
       else if (a.title < b.title) {
+
         return -1;
+
       }
+
       return 0;
-  
     })
-  
-  }
-
-
-// Get responsibel for course 
-function responsibelOfCourse (counter) {
-  
-    let course = DATABASE.courses[counter]; 
-  
-    let teachersName = DATABASE.teachers.map((teacher) => `${teacher.firstName} ${teacher.lastName} (${teacher.post})`)
-  
-    let result = course.courseResponsible
-  
-    return teachersName[result];
-  
 }
 
-// Teachers in courses
-function teacherInCourse (counter) {
+
+// Få ansvarig lärarna för varje kursn 
+function responsibelOfCourse (counter) {
+
+    // Variabel course får courses  och får en counter s
+    let course = DATABASE.courses[counter]; 
   
-    let courses = DATABASE.courses[counter].teachers;
+    // skriver lärares för och efter nman och psot i en ny array 
+    let teachersName = DATABASE.teachers.map((teacher) => `${teacher.firstName} ${teacher.lastName} (${teacher.post})`)
+  
+    // result får assinat courseResponsibel 
+    let result = course.courseResponsible
+
+    // retunerar lärare där result matchar
+    return teachersName[result];
+}
+
+// Lärare delaktiga i kurs
+function teacherInCourse (counter) {
     
-    // console.log(courses)
-    
+    // loppar igenom courses för att få ut lärarnas nummer 
     for ( let course of DATABASE.courses[counter].teachers) {
       
-        // console.log(course)
-    
-      for ( let teachers of DATABASE.teachers ) {
-    
-        // console.log(teachers)
+        // loppar igenom lärare i databasen 
+        for ( let teachers of DATABASE.teachers ) {
 
-        if ( course == teachers.teacherId ) {
+            // Om nummer i courses matchar lärarens id  få lärare
+            if ( course == teachers.teacherId ) {
 
-          selectElement(`div > div:last-child > .name-teachers`).innerHTML += `
-                <div>
-                    ${teachers.firstName} ${teachers.lastName}  (${teachers.post})
-                </div>
-            `
+                selectElement(`div > div:last-child > .name-teachers`).innerHTML += `
+                    <div class="course-teachers">
+                        ${teachers.firstName} ${teachers.lastName}  (${teachers.post})
+                    </div>
+                `
+            }  
         }  
-      }  
     }
-  }
+}
 
-// Get the students of the course 
+// Få Studenter i kursen 
 function getStudentsFromCourse (counter) {
   
+    // filtrerar studenterna i databasen genom some som letar efter åtminstone en kurs i varje students kurslista som matchar vår nuvarande kurs
     let students = DATABASE.students.filter((student) => student.courses.some((course) => course.courseId == DATABASE.courses[counter].courseId))
+    // console.log(students)
+
+    // lopp för varje student
     for (let student of students){
-        
+       
+        //filtrerar om studenters course id är det samma som courses id i databasen och blir assinat infomrationen om students kurs
         let courseById = student.courses.filter((course) => course.courseId == DATABASE.courses[counter].courseId)
-        
+       
+        // Om courses första object passcredits är det samma som kursens total kredits kör de som är klara med kursen 
         if ( courseById[0].passedCredits == DATABASE.courses[counter].totalCredits ) { 
         selectElement('div > div:last-child > .students').innerHTML += `
         <div class="done">
@@ -93,25 +104,30 @@ function getStudentsFromCourse (counter) {
     } 
 }
 
-
-
+// Få kurserna som är klara och inte klara med information 
 function getTeacersOnSearch () {
 
     let search = selectElement("#searchbar").value;
     // console.log(search);
 
+    // rensar innehållet för att inte behålla gammal sökning 
     clearResults();
 
+    // om searchen är längre en 0 kör sökning 
     if (search.length > 0) {
         
+        // loppar igenom databasesn kurserna 
         for ( let i = 0; i < DATABASE.courses.length; i++ ) {
 
             // console.log(DATABASE.courses[i].title)
 
+            // Om searcbaren innehåller något som liknas Titlen från kurserna 
             if ( DATABASE.courses[i].title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ) {
 
+                // sorterar studenterna 
                 sortCourseTitle();
 
+                // Lägger till innehåll om Kursen
                 selectElement("#search-result").innerHTML += `
                     <div class="search-div">
 
@@ -146,40 +162,53 @@ function getTeacersOnSearch () {
 // Kollar efter sparade darkmode 
 let darkMode = localStorage.getItem('darkMode'); 
 
-let darkModeToggle = document.querySelector('#dark-mode-toggle');
+let darkModeToggle = selectElement('#dark-mode-toggle');
 
 // aktivera DarkMode
 function enableDarkMode ()  {
+
   // Lägger till klass 
   document.body.classList.add('darkmode');
+
   // updaterar darkMode till localStorage
   localStorage.setItem('darkMode', 'enabled');
+
 }
 
 // av aktiverar DarMode 
 function disableDarkMode () {
+
   // tarbort classen darkMode
   document.body.classList.remove('darkmode');
+
   // updaterar darkMode i localStorage 
   localStorage.setItem('darkMode', null);
+
 }
  
 // Om användaren har ackiverar DarkMode sedan tidigare 
 if (darkMode === 'enabled') {
+
   enableDarkMode();
+
 }
 
 // Knapp för aktivera och avaktivera
 darkModeToggle.addEventListener('click', () => {
+
   // Få dark mode inställningar
   darkMode = localStorage.getItem('darkMode'); 
   
   // Om inte aktiverad aktivera 
   if (darkMode !== 'enabled') {
+
     enableDarkMode();
-  // Om aktiverade avaktivera 
-  } else {  
+    
+} else {  
+
+      // Om aktiverade avaktivera 
     disableDarkMode(); 
+    
   }
 });
 
