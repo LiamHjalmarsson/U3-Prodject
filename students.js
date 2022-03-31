@@ -133,15 +133,13 @@ function enableDarkMode ()  {
   localStorage.setItem('darkMode', 'enabled');
 }
 
-// av aktiverar DarMode 
+// Av aktiverar DarMode 
 function disableDarkMode () {
   // tarbort classen darkMode
   document.body.classList.remove('darkmode');
   // updaterar darkMode i localStorage 
   localStorage.setItem('darkMode', null);
 }
-
-console.log(darkModeToggle)
  
 // Om användaren har ackiverar DarkMode sedan tidigare 
 if (darkMode === 'enabled') {

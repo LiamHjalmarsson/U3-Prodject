@@ -163,8 +163,6 @@ function disableDarkMode () {
   // updaterar darkMode i localStorage 
   localStorage.setItem('darkMode', null);
 }
-
-console.log(darkModeToggle)
  
 // Om användaren har ackiverar DarkMode sedan tidigare 
 if (darkMode === 'enabled') {
