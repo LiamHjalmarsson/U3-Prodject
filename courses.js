@@ -123,7 +123,7 @@ function getTeacersOnSearch () {
             // console.log(DATABASE.courses[i].title)
 
             // Om searcbaren innehåller något som liknas Titlen från kurserna 
-            if ( DATABASE.courses[i].title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ) {
+            if ( DATABASE.courses[i].title.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
 
                 // sorterar studenterna 
                 sortCourseTitle();
@@ -214,4 +214,3 @@ darkModeToggle.addEventListener('click', () => {
 });
 
 selectElement("#searchbar").addEventListener("keyup", getTeacersOnSearch);
-
